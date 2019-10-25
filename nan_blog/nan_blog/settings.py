@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'nan_blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'groupecedricdb',
+        'USER': 'groupecedric',
+        'PASSWORD': 'nan0980',
+        'HOST': '51.77.197.177',
+        'PORT': '5432',
     }
 }
 
