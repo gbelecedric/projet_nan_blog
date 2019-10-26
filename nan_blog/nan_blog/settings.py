@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'configuration.apps.ConfigurationConfig',
     'contact.apps.ContactConfig',
     'statistique.apps.StatistiqueConfig',
+    'entreprise',
+    
     'tinymce',
     'filebrowser',
     'django_admin_generator',
