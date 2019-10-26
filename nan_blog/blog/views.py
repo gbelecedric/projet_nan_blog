@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import *
 # Create your views here.
 def home(request):
     
@@ -8,7 +8,29 @@ def home(request):
 
 def detail(request , id):
     
-    data={}
+    # lien = Link.objects.filter(status=True).order_by('-date_add')
+    # image = Background.objects.filter(status=True).order_by('-date_add')
+    archive = Categorie.objects.filter(status=True).order_by('-date_add') 
+    alltag = Tag.objects.filter(status=True)
+    article = Article.objects.get(pk=id)
+    categorie = Categorie.objects.filter(status=True).order_by('-date_add')
+    tag = article.tag_name.all()
+    comment = Commentaire.objects.filter(article_id = article).order_by('-date_add')
+    comment7 = Commentaire.objects.filter(article_id = article).order_by('-date_add')[5::]
+
+    print(comment7)
+    
+    data={
+        'verif':len(comment7),
+        # 'lien':lien,
+        # 'image':image,
+        'alltag':alltag,
+        'archive':archive,
+        'tag':tag,
+        'categorie':categorie,
+        'comment':comment,
+        'article':article,
+    }
     return render(request, 'pages/blog/blog-detail.html',data)
 
 def category(request):
