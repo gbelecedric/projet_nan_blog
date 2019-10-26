@@ -28,6 +28,7 @@ urlpatterns = [
      path('configuration/', include('configuration.urls')),
      path('tinymce/', include('tinymce.urls')),
      path('admin/filebrowser/', site.urls),
+     path('api/', include('api.urls')),
 ]
 
 if settings.DEBUG:

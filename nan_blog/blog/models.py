@@ -39,7 +39,7 @@ class Article(models.Model):
     categorie_id =  models.ForeignKey(Categorie,on_delete=models.CASCADE, related_name="categorie")
     contenu =  HTMLField('article_description',)
     photo = models.ImageField(upload_to ='article')
-    tag_name = models.ManyToManyField(Tag)
+    tag_name = models.ManyToManyField(Tag, related_name="tag_article")
     nom =  models.ForeignKey(User,on_delete=models.CASCADE)
     nbr_comment = models.IntegerField(default="0")
     nbr_like = models.IntegerField(default="0")

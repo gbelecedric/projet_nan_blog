@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'tinymce',
     'filebrowser',
     'django_admin_generator',
+    'rest_framework',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
