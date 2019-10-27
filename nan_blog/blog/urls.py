@@ -11,6 +11,7 @@ urlpatterns = [
     path('postreply/<int:id>', views.sendreply, name='postreply'),
     path('dashborad/', views.archive, name='archive'),
     path('profile/', views.element, name='element'),
+    path('modif_profil/', views.modif_profil, name='modif_profil'),
 
 ]
   

@@ -48,6 +48,11 @@ def element(request):
     data={}
     return render(request, 'pages/blog/element.html',data)
 
+def modif_profil(request):
+    
+    data={}
+    return render(request, 'pages/blog/modif_profil.html',data)
+
 
 def senduserimage(request , id):
     # print(id)
