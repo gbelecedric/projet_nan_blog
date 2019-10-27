@@ -1,6 +1,6 @@
 import graphene
 
-from graphene import relay, ObjectType
+from graphene import relay, ObjectType, Connection, Node, Int
 from graphene_django import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 
@@ -8,11 +8,24 @@ from .models import *
 
 # Graphene will automatically map the Article model's fields onto the ArticleNode.
 # This is configured in the ArticleNode's Meta class (as you can see below)
+class ExtendedConnection(Connection):
+    class Meta:
+        abstract = True
+
+    total_count = Int()
+    edge_count = Int()
+
+    def resolve_total_count(root, info, **kwargs):
+        return root.length
+    def resolve_edge_count(root, info, **kwargs):
+        return len(root.edges)
+
 class CategorieNode(DjangoObjectType):
     class Meta:
         model = Categorie
         filter_fields = ['titre',]
         interfaces = (relay.Node, )
+        connection_class = ExtendedConnection
 
 
 class ArticleNode(DjangoObjectType):
@@ -20,6 +33,7 @@ class ArticleNode(DjangoObjectType):
         model = Article
         filter_fields = ['titre',]
         interfaces = (relay.Node, )
+        connection_class = ExtendedConnection
 
 
 class TagNode(DjangoObjectType):
@@ -40,6 +54,15 @@ class CommentaireNode(DjangoObjectType):
             'contenu': ['exact', 'icontains', 'istartswith'],
         }
         interfaces = (relay.Node, )
+        connection_class = ExtendedConnection
+
+
+class LikeNode(DjangoObjectType):
+    class Meta:
+        model = Like
+        filter_fields = ['date_add',]
+        interfaces = (relay.Node, )
+        connection_class = ExtendedConnection
 
 
 class Query(ObjectType):
@@ -54,3 +77,7 @@ class Query(ObjectType):
 
     Commentaire = relay.Node.Field(CommentaireNode)
     all_Commentaires = DjangoFilterConnectionField(CommentaireNode)
+
+
+    Like = relay.Node.Field(LikeNode)
+    all_Likes = DjangoFilterConnectionField(LikeNode)

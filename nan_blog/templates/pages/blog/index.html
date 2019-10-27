@@ -174,7 +174,7 @@
 												<li>
 													<a href="#">
 														<span class="lnr lnr-bubble"></span>
-														03 Comments
+														${ article.node.commentaires.totalCount } Comments
 													</a>
 												</li>
 											</ul>
@@ -293,7 +293,7 @@
 						<h4 class="title">Post Categories</h4>
 						<ul>
 							<li v-for="cat in data_all_category"><a :href=`${base_url}`+`category/`+`${cat.node.id}` class="justify-content-between align-items-center d-flex">
-									<p>${ cat.node.titre }</p> <span>37</span>
+									<p>${ cat.node.titre }</p> <span>${ cat.node.articles.totalCount }</span>
 								</a></li>
 						</ul>
 					</div>
@@ -369,8 +369,12 @@ var app = new Vue({
 									}
 									dateAdd
 									description
-									nbrComment
-									nbrLike
+									commentaires{
+									totalCount
+									}
+									likes{
+									totalCount
+									}
 								}
 								}
 							},
@@ -380,6 +384,9 @@ var app = new Vue({
 									id
 									titre
 									image
+									articles {
+									totalCount
+									}
 								}
 								}
 							}
