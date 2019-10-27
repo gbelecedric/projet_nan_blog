@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce import HTMLField
+from django.utils.text import slugify
 # Create your models here.
 #------------------------ blog_app_model --------------#
 class Timemodels(models.Model):

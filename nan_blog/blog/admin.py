@@ -62,6 +62,7 @@ class ArticleAdmin(admin.ModelAdmin):
         'date_update',
         'status',
     )
+    exclude=('titre_slug',)
     list_filter = (
         'categorie_id',
         'nom',
