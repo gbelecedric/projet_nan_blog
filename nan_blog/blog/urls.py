@@ -9,8 +9,13 @@ urlpatterns = [
     path('<int:id>/category', views.category, name='category'),
     path('postimage/<int:id>', views.senduserimage, name='postimage'),
     path('postreply/<int:id>', views.sendreply, name='postreply'),
-    path('dashborad/', views.archive, name='archive'),
+    path('dashborads/', views.archive, name='archive'),
     path('profile/', views.element, name='element'),
+    path('dashbord', views.dashbord, name='dashbord'),
+    path('dashpost', views.dashpost, name='dashpost'),
+    path('dashdetail', views.dashdetail, name='dashdetail'),
+    path('error', views.error, name='error'),
+    
 
 ]
   

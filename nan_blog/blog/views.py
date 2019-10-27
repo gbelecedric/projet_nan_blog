@@ -48,6 +48,25 @@ def element(request):
     data={}
     return render(request, 'pages/blog/element.html',data)
 
+def dashbord(request):
+    
+    data={}
+    return render(request, 'pages/dashbord/dashbord.html',data)
+
+def dashpost(request):
+    
+    data={}
+    return render(request, 'pages/dashbord/posts.html',data)
+
+def dashdetail(request):
+    
+    data={}
+    return render(request, 'pages/dashbord/dashdetail.html',data)
+
+def error(request):
+    
+    data={}
+    return render(request, 'pages/dashbord/page_404.html',data)
 
 def senduserimage(request , id):
     # print(id)
