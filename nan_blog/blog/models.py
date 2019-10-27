@@ -47,20 +47,25 @@ class Article(models.Model):
     date_update =  models.DateTimeField(auto_now=True)
     status =  models.BooleanField(default=False)
 
+    
+
     @property
     def nbr_like(self):
         n = self.likes.all().count()
+      
         return n
 
     @property
     def nbr_comment(self):
         n = self.commentaires.all().count()
+      
         return n
 
 
     def save(self, *args, **kwargs):
         self.titre_slug = slugify(self.titre)
         super(Article, self).save(*args, **kwargs)
+    
     
     class Meta:
         verbose_name = 'Article'

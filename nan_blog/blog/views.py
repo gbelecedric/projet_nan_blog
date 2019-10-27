@@ -7,6 +7,7 @@ def home(request):
     return render(request, 'pages/blog/index.html',data)
 
 def detail(request , titre):
+    # save = Article.save
     
     # lien = Link.objects.filter(status=True).order_by('-date_add')
     # image = Background.objects.filter(status=True).order_by('-date_add')

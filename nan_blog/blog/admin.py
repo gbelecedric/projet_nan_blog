@@ -16,6 +16,7 @@ class TagAdmin(admin.ModelAdmin):
         'date_update',
         'status',
         'nom',
+        
     )
 
 
@@ -48,6 +49,8 @@ class CategorieAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
 
     list_display = (
+ 
+    
         'id',
         'temps_de_lecture',
         'titre',
@@ -61,9 +64,12 @@ class ArticleAdmin(admin.ModelAdmin):
         'date_add',
         'date_update',
         'status',
+        'titre_slug',
     )
-    exclude=('titre_slug',)
+  
     list_filter = (
+      
+    
         'categorie_id',
         'nom',
         'date_add',
@@ -80,6 +86,8 @@ class ArticleAdmin(admin.ModelAdmin):
         'date_add',
         'date_update',
         'status',
+        'titre_slug',
+        
     )
     raw_id_fields = ('tag_name',)
 
