@@ -154,7 +154,7 @@
 										<div class="meta-details">
 											<ul>
 												<li>
-													<a :href=`${base_url}`+`${article.node.titreSlug}`+`/details/`>
+													<a :href=`${base_url}`+`details/`+`${article.node.titreSlug}`>
 														<span class="lnr lnr-calendar-full"></span>
 														${ article.node.dateAdd }
 													</a>
@@ -166,7 +166,7 @@
 													</a>
 												</li>
 												<li>
-													<a :href=`${base_url}`+`${article.node.categorieId.id}`+`/category/`>
+													<a :href=`${base_url}`+`category/`+`${article.node.categorieId.titre}`>
 														<span class="lnr lnr-coffee-cup"></span>
 														${ article.node.categorieId.titre }
 													</a>
@@ -292,7 +292,7 @@
 					<div class="single-widget category-widget">
 						<h4 class="title">Post Categories</h4>
 						<ul>
-							<li v-for="cat in data_all_category"><a :href=`${base_url}`+`category/`+`${cat.node.id}` class="justify-content-between align-items-center d-flex">
+							<li v-for="cat in data_all_category"><a :href=`${base_url}`+`category/`+`${cat.node.titre}` class="justify-content-between align-items-center d-flex">
 									<p>${ cat.node.titre }</p> <span>${ cat.node.articles.totalCount }</span>
 								</a></li>
 						</ul>
