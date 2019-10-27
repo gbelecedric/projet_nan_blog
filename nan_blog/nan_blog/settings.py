@@ -44,10 +44,11 @@ INSTALLED_APPS = [
     'contact.apps.ContactConfig',
     'statistique.apps.StatistiqueConfig',
     'entreprise',
-    
     'tinymce',
     'filebrowser',
     'django_admin_generator',
+    'django_filters',
+    'graphene_django',
 ]
 
 MIDDLEWARE = [

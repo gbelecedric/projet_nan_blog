@@ -35,8 +35,9 @@ class Categorie(Timemodels):
 class Article(models.Model):
     temps_de_lecture = models.CharField(max_length=255)
     titre =  models.CharField(max_length=255)
+    titre_slug = models.SlugField(max_length=255)
     description = models.TextField()
-    categorie_id =  models.ForeignKey(Categorie,on_delete=models.CASCADE, related_name="categorie")
+    categorie_id =  models.ForeignKey(Categorie,on_delete=models.CASCADE, related_name="articles")
     contenu =  HTMLField('article_description',)
     photo = models.ImageField(upload_to ='article')
     tag_name = models.ManyToManyField(Tag)
@@ -46,6 +47,10 @@ class Article(models.Model):
     date_add =  models.DateTimeField(auto_now_add=True)
     date_update =  models.DateTimeField(auto_now=True)
     status =  models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        self.titre_slug = slugify(self.titre)
+        super(Article, self).save(*args, **kwargs)
     
     class Meta:
         verbose_name = 'Article'
