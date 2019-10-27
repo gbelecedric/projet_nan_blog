@@ -6,13 +6,13 @@ def home(request):
     data={}
     return render(request, 'pages/blog/index.html',data)
 
-def detail(request , id):
+def detail(request , titre):
     
     # lien = Link.objects.filter(status=True).order_by('-date_add')
     # image = Background.objects.filter(status=True).order_by('-date_add')
     archive = Categorie.objects.filter(status=True).order_by('-date_add') 
     alltag = Tag.objects.filter(status=True)
-    article = Article.objects.get(pk=id)
+    article = Article.objects.filter(titre_slug=titre)[:1].get()
     categorie = Categorie.objects.filter(status=True).order_by('-date_add')
     tag = article.tag_name.all()
     comment = Commentaire.objects.filter(article_id = article).order_by('-date_add')
@@ -33,9 +33,11 @@ def detail(request , id):
     }
     return render(request, 'pages/blog/blog-detail.html',data)
 
-def category(request):
+def categorie(request, titre):
     
-    data={}
+    data={
+        'titre': titre
+    }
     return render(request, 'pages/blog/category.html',data)
 
 def archive(request):
@@ -67,6 +69,11 @@ def error(request):
     
     data={}
     return render(request, 'pages/dashbord/page_404.html',data)
+def modif_profil(request):
+    
+    data={}
+    return render(request, 'pages/blog/modif_profil.html',data)
+
 
 def senduserimage(request , id):
     # print(id)

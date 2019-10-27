@@ -56,12 +56,11 @@ class ArticleAdmin(admin.ModelAdmin):
         'contenu',
         'photo',
         'nom',
-        'nbr_comment',
-        'nbr_like',
         'date_add',
         'date_update',
         'status',
     )
+    exclude=('titre_slug',)
     list_filter = (
         'categorie_id',
         'nom',
@@ -76,8 +75,6 @@ class ArticleAdmin(admin.ModelAdmin):
         'contenu',
         'photo',
         'nom',
-        'nbr_comment',
-        'nbr_like',
         'date_add',
         'date_update',
         'status',

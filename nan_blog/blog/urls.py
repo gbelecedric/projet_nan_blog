@@ -5,8 +5,8 @@ from . import views
 app_name = 'blog'
 urlpatterns = [
     path('', views.home, name='home'),
-    path('<int:id>/details', views.detail, name='detail'),
-    path('<int:id>/category', views.category, name='category'),
+    path('details/<str:titre>', views.detail, name='detail'),
+    path('category/<str:titre>', views.categorie, name='categorie'),
     path('postimage/<int:id>', views.senduserimage, name='postimage'),
     path('postreply/<int:id>', views.sendreply, name='postreply'),
     path('dashborads/', views.archive, name='archive'),
@@ -16,6 +16,7 @@ urlpatterns = [
     path('dashdetail', views.dashdetail, name='dashdetail'),
     path('error', views.error, name='error'),
     
+    path('modif_profil/', views.modif_profil, name='modif_profil'),
 
 ]
   
