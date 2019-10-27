@@ -76,8 +76,6 @@ class ArticleAdmin(admin.ModelAdmin):
         'categorie_id',
         'contenu',
         'photo',
-        'nbr_like',
-        'nbr_comment',
         'nom',
         'date_add',
         'date_update',
