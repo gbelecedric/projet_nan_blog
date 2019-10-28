@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from tinymce import HTMLField
 from django.utils.text import slugify
-
+from datetime import datetime
 
 
 # Create your models here.
@@ -50,7 +50,9 @@ class Article(models.Model):
     date_add =  models.DateTimeField(auto_now_add=True)
     date_update =  models.DateTimeField(auto_now=True)
     status =  models.BooleanField(default=False)
-
+    nb_com = models.PositiveIntegerField(default="0",editable=False)
+    nb_like = models.PositiveIntegerField(default="0",editable=False)
+   
     
 
     @property
@@ -64,13 +66,19 @@ class Article(models.Model):
         n = self.commentaires.all().count()
       
         return n
+  
 
 
     def save(self, *args, **kwargs):
         u3 = uuid.uuid3(uuid.NAMESPACE_DNS,  str(self.pk))
        
         self.titre_slug ='@'+ slugify(self.titre + str(u3) + str(self.pk)  + self.nom.username )
+        self.nb_com = self.nbr_comment
+        self.nb_like=self.nbr_like
+        
         super(Article, self).save(*args, **kwargs)
+        
+
 
     
     
