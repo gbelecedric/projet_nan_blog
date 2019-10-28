@@ -35,7 +35,9 @@ class CategorieNode(DjangoObjectType):
 class ArticleNode(DjangoObjectType):
     class Meta:
         model = Article
-        filter_fields = ['titre',]
+        filter_fields = {
+            'titre': ['exact', 'icontains', 'istartswith'],
+        }
         interfaces = (relay.Node, )
         connection_class = ExtendedConnection
 
