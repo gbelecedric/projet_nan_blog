@@ -47,24 +47,27 @@ class CategorieAdmin(admin.ModelAdmin):
 
 
 class ArticleAdmin(admin.ModelAdmin):
-
     list_display = (
- 
+      
     
+        'nb_com',
+        'nb_like',
+      
+    
+       
+        'titre_slug',
         'id',
         'temps_de_lecture',
         'titre',
-        'description',
+       
         'categorie_id',
-        'contenu',
+
         'photo',
-        'nbr_like',
-        'nbr_comment',
         'nom',
         'date_add',
         'date_update',
         'status',
-        'titre_slug',
+      
     )
   
     list_filter = (
@@ -78,9 +81,9 @@ class ArticleAdmin(admin.ModelAdmin):
         'id',
         'temps_de_lecture',
         'titre',
-        'description',
-        'categorie_id',
-        'contenu',
+       
+       
+      
         'photo',
         'nom',
         'date_add',
