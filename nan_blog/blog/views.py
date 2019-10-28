@@ -12,10 +12,14 @@ def home(request):
     return render(request, 'pages/blog/index.html',data)
 
 def detail(request , titre):
-    # save = Article.save
+    
     
     # lien = Link.objects.filter(status=True).order_by('-date_add')
     # image = Background.objects.filter(status=True).order_by('-date_add')
+    maxim = Article.objects.filter(status=True).order_by('-nb_like') 
+    print(maxim)
+    
+
     archive = Categorie.objects.filter(status=True).order_by('-date_add') 
     alltag = Tag.objects.filter(status=True)
     article = Article.objects.get(titre_slug=titre)
@@ -23,6 +27,7 @@ def detail(request , titre):
     tag = article.tag_name.all()
     comment = Commentaire.objects.filter(article_id = article).order_by('-date_add')
     comment7 = Commentaire.objects.filter(article_id = article).order_by('-date_add')[5::]
+   
 
     
 
@@ -39,6 +44,7 @@ def detail(request , titre):
         'categorie':categorie,
         'comment':comment,
         'article':article,
+        'maxim':maxim,
     }
     return render(request, 'pages/blog/blog-detail.html',data)
 
