@@ -1,8 +1,12 @@
  #--------------------import--blog-----------#
+import uuid
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce import HTMLField
 from django.utils.text import slugify
+
+
+
 # Create your models here.
 #------------------------ blog_app_model --------------#
 class Timemodels(models.Model):
@@ -36,7 +40,7 @@ class Categorie(Timemodels):
 class Article(models.Model):
     temps_de_lecture = models.CharField(max_length=255)
     titre =  models.CharField(max_length=255)
-    titre_slug = models.SlugField(max_length=255)
+    titre_slug = models.SlugField(max_length=255,editable=False,default=uuid.uuid4,)
     description = models.TextField()
     categorie_id =  models.ForeignKey(Categorie,on_delete=models.CASCADE, related_name="articles")
     contenu =  HTMLField('article_description',)
@@ -63,8 +67,11 @@ class Article(models.Model):
 
 
     def save(self, *args, **kwargs):
-        self.titre_slug = slugify(self.titre)
+        u3 = uuid.uuid3(uuid.NAMESPACE_DNS,  str(self.pk))
+       
+        self.titre_slug ='@'+ slugify(self.titre + str(u3) + str(self.pk)  + self.nom.username )
         super(Article, self).save(*args, **kwargs)
+
     
     
     class Meta:

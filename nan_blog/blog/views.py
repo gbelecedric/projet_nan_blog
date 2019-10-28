@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import *
+import string 
+from django.utils.text import slugify 
 # Create your views here.
 def home(request):
     
@@ -20,8 +22,11 @@ def detail(request , titre):
     comment7 = Commentaire.objects.filter(article_id = article).order_by('-date_add')[5::]
 
     print(comment7)
-    
+
+
     data={
+        
+    
         'verif':len(comment7),
         # 'lien':lien,
         # 'image':image,

@@ -49,8 +49,8 @@ class CategorieAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
 
     list_display = (
- 
-    
+  
+        'titre_slug',
         'id',
         'temps_de_lecture',
         'titre',
@@ -64,7 +64,7 @@ class ArticleAdmin(admin.ModelAdmin):
         'date_add',
         'date_update',
         'status',
-        'titre_slug',
+      
     )
   
     list_filter = (
