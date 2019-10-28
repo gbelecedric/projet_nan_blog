@@ -54,7 +54,7 @@ def archive(request):
     data={}
     return render(request, 'pages/blog/archive.html',data)
 
-@login_required(login_url='login_visit')
+@login_required(login_url='comptes:login_visit')
 def element(request):
     
     data={}
@@ -80,11 +80,6 @@ def error(request):
     
     data={}
     return render(request, 'pages/dashbord/page_404.html',data)
-def modif_profil(request):
-    
-    data={}
-    return render(request, 'pages/blog/modif_profil.html',data)
-
 
 def senduserimage(request , id):
     # print(id)

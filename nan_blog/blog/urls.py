@@ -15,8 +15,6 @@ urlpatterns = [
     path('dashpost', views.dashpost, name='dashpost'),
     path('dashdetail', views.dashdetail, name='dashdetail'),
     path('error', views.error, name='error'),
-    
-    path('modif_profil/', views.modif_profil, name='modif_profil'),
 
 ]
   
