@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
 from .models import *
+
 # Create your views here.
 def home(request):
     
@@ -43,15 +46,13 @@ def archive(request):
     data={}
     return render(request, 'pages/blog/archive.html',data)
 
+@login_required(login_url='login_visit')
 def element(request):
     
     data={}
     return render(request, 'pages/blog/element.html',data)
 
-def modif_profil(request):
-    
-    data={}
-    return render(request, 'pages/blog/modif_profil.html',data)
+
 
 
 def senduserimage(request , id):
