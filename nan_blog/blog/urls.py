@@ -14,7 +14,7 @@ urlpatterns = [
     path('dashbord', views.dashbord, name='dashbord'),
     path('dashpost', views.dashpost, name='dashpost'),
     path('dashdetail', views.dashdetail, name='dashdetail'),
-    path('profil', views.profil, name='profil'),
+    path('prof', views.prof, name='prof'),
     path('error', views.error, name='error'),
 
 

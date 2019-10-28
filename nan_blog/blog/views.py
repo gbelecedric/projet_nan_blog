@@ -189,7 +189,7 @@ def sendreply(request , id):
     return JsonResponse(data, safe=False)
 
 
-def profil(request):
+def prof(request):
     
     data={}
     return render(request, 'pages/profil/index.html',data)
