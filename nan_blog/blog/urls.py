@@ -16,5 +16,6 @@ urlpatterns = [
     path('dashdetail', views.dashdetail, name='dashdetail'),
     path('error', views.error, name='error'),
 
+
 ]
   
