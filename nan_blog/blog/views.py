@@ -15,13 +15,13 @@ def detail(request , titre):
     # image = Background.objects.filter(status=True).order_by('-date_add')
     archive = Categorie.objects.filter(status=True).order_by('-date_add') 
     alltag = Tag.objects.filter(status=True)
-    article = Article.objects.filter(titre_slug=titre)[:1].get()
+    article = Article.objects.get(titre_slug=titre)
     categorie = Categorie.objects.filter(status=True).order_by('-date_add')
     tag = article.tag_name.all()
     comment = Commentaire.objects.filter(article_id = article).order_by('-date_add')
     comment7 = Commentaire.objects.filter(article_id = article).order_by('-date_add')[5::]
 
-    print(comment7)
+    
 
 
     data={

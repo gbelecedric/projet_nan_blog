@@ -126,3 +126,11 @@ class Like(Timemodels):
     
     def __str__(self):
         return self.person
+    
+class serarch (Timemodels):
+    query= models.CharField(max_length=250)
+    user = models.ForeignKey(User,on_delete=models.CASCADE, related_name="user_search")
+    
+    class Meta:
+        verbose_name = 'serarch'
+        verbose_name_plural = 'les recherches des utilisateurs'
