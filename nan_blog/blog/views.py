@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
 from .models import *
+
 import string 
 from django.utils.text import slugify 
 # Create your views here.
@@ -57,10 +60,12 @@ def archive(request):
     data={}
     return render(request, 'pages/blog/archive.html',data)
 
+@login_required(login_url='login_visit')
 def element(request):
     
     data={}
     return render(request, 'pages/blog/element.html',data)
+
 
 def dashbord(request):
     
