@@ -16,6 +16,7 @@ class TagAdmin(admin.ModelAdmin):
         'date_update',
         'status',
         'nom',
+        
     )
 
 
@@ -46,23 +47,27 @@ class CategorieAdmin(admin.ModelAdmin):
 
 
 class ArticleAdmin(admin.ModelAdmin):
-
     list_display = (
+        'nbr_like',
+        'nbr_comment',
+        'titre_slug',
         'id',
         'temps_de_lecture',
         'titre',
-        'description',
+       
         'categorie_id',
-        'contenu',
+
         'photo',
         'nom',
-        'nbr_comment',
-        'nbr_like',
         'date_add',
         'date_update',
         'status',
+      
     )
+  
     list_filter = (
+      
+    
         'categorie_id',
         'nom',
         'date_add',
@@ -71,16 +76,16 @@ class ArticleAdmin(admin.ModelAdmin):
         'id',
         'temps_de_lecture',
         'titre',
-        'description',
-        'categorie_id',
-        'contenu',
+       
+       
+      
         'photo',
         'nom',
-        'nbr_comment',
-        'nbr_like',
         'date_add',
         'date_update',
         'status',
+        'titre_slug',
+        
     )
     raw_id_fields = ('tag_name',)
 

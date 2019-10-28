@@ -131,16 +131,15 @@
 				<div class="col-lg-8 post-list">
 					<!-- Start Post Area -->
 					<section class="post-area">
-						<div class="single-post-item">
+						<div v-for="article in data_all_articles" class="single-post-item">
 							<figure>
-								<img class="post-img img-fluid" src="/static/img/posts/p1.jpg" alt="">
+								<img class="post-img img-fluid" :src=`${base_url}`+`media/`+`${article.node.photo}` alt="">
 							</figure>
 							<h3>
-								<a href="}">It's Hurricane Season But We Are Visiting Hilton Island</a>
+								<a :href=`${base_url}`+`details/`+`${article.node.titreSlug}`>${ article.node.titre }</a>
 							</h3>
-							<p>orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-							<a href="}" class="primary-btn text-uppercase mt-15">continue Reading</a>
+							<p>${ article.node.description }</p>
+							<a :href=`${base_url}`+`details/`+`${article.node.titreSlug}` class="primary-btn text-uppercase mt-15">continue Reading</a>
 							<div class="post-box">
 								<div class="d-flex">
 									<div>
@@ -155,9 +154,9 @@
 										<div class="meta-details">
 											<ul>
 												<li>
-													<a href="#">
+													<a :href=`${base_url}`+`details/`+`${article.node.titreSlug}`>
 														<span class="lnr lnr-calendar-full"></span>
-														13th Oct, 2018
+														${ article.node.dateAdd }
 													</a>
 												</li>
 												<li>
@@ -167,231 +166,15 @@
 													</a>
 												</li>
 												<li>
-													<a href="#">
+													<a :href=`${base_url}`+`category/`+`${article.node.categorieId.titre}`>
 														<span class="lnr lnr-coffee-cup"></span>
-														Food & Travel
+														${ article.node.categorieId.titre }
 													</a>
 												</li>
 												<li>
 													<a href="#">
 														<span class="lnr lnr-bubble"></span>
-														03 Comments
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="single-post-item">
-							<figure>
-								<img class="post-img img-fluid" src="/static/img/posts/p2.jpg" alt="">
-							</figure>
-							<h3>
-								<a href="}">Global Resorts Network Grn Putting Timeshares To Shame</a>
-							</h3>
-							<p>orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-							<a href="}" class="primary-btn text-uppercase mt-15">continue Reading</a>
-							<div class="post-box">
-								<div class="d-flex">
-									<div>
-										<a href="#">
-											<img src="/static/img/author/a1.png" alt="">
-										</a>
-									</div>
-									<div class="post-meta">
-										<div class="meta-head">
-											<a href="#">Marvel Maison</a>
-										</div>
-										<div class="meta-details">
-											<ul>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-calendar-full"></span>
-														13th Oct, 2018
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-picture"></span>
-														Image Post
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-coffee-cup"></span>
-														Food & Travel
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-bubble"></span>
-														03 Comments
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="single-post-item">
-							<figure>
-								<img class="post-img img-fluid" src="/static/img/posts/p3.jpg" alt="">
-							</figure>
-							<h3>
-								<a href="#">A Guide To Rocky Mountain Vacations</a>
-							</h3>
-							<p>orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-							<a href="#" class="primary-btn text-uppercase mt-15">continue Reading</a>
-							<div class="post-box">
-								<div class="d-flex">
-									<div>
-										<a href="#">
-											<img src="/static/img/author/a1.png" alt="">
-										</a>
-									</div>
-									<div class="post-meta">
-										<div class="meta-head">
-											<a href="#">Marvel Maison</a>
-										</div>
-										<div class="meta-details">
-											<ul>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-calendar-full"></span>
-														13th Oct, 2018
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-picture"></span>
-														Image Post
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-coffee-cup"></span>
-														Food & Travel
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-bubble"></span>
-														03 Comments
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="single-post-item">
-							<figure>
-								<img class="post-img img-fluid" src="/static/img/posts/p4.jpg" alt="">
-							</figure>
-							<h3>
-								<a href="#">Big Savings On Gas While You Travel</a>
-							</h3>
-							<p>orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-							<a href="#" class="primary-btn text-uppercase mt-15">continue Reading</a>
-							<div class="post-box">
-								<div class="d-flex">
-									<div>
-										<a href="#">
-											<img src="/static/img/author/a1.png" alt="">
-										</a>
-									</div>
-									<div class="post-meta">
-										<div class="meta-head">
-											<a href="#">Marvel Maison</a>
-										</div>
-										<div class="meta-details">
-											<ul>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-calendar-full"></span>
-														13th Oct, 2018
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-picture"></span>
-														Image Post
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-coffee-cup"></span>
-														Food & Travel
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-bubble"></span>
-														03 Comments
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="single-post-item">
-							<figure>
-								<img class="post-img img-fluid" src="/static/img/posts/p5.jpg" alt="">
-							</figure>
-							<h3>
-								<a href="#">Tourism Is Back In Full Swing In Cancun Mexico</a>
-							</h3>
-							<p>orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-								magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-							<a href="#" class="primary-btn text-uppercase mt-15">continue Reading</a>
-							<div class="post-box">
-								<div class="d-flex">
-									<div>
-										<a href="#">
-											<img src="/static/img/author/a1.png" alt="">
-										</a>
-									</div>
-									<div class="post-meta">
-										<div class="meta-head">
-											<a href="#">Marvel Maison</a>
-										</div>
-										<div class="meta-details">
-											<ul>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-calendar-full"></span>
-														13th Oct, 2018
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-picture"></span>
-														Image Post
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-coffee-cup"></span>
-														Food & Travel
-													</a>
-												</li>
-												<li>
-													<a href="#">
-														<span class="lnr lnr-bubble"></span>
-														03 Comments
+														${ article.node.commentaires.totalCount } Comments
 													</a>
 												</li>
 											</ul>
@@ -509,26 +292,8 @@
 					<div class="single-widget category-widget">
 						<h4 class="title">Post Categories</h4>
 						<ul>
-							<li><a href="#" class="justify-content-between align-items-center d-flex">
-									<p>Techlology</p> <span>37</span>
-								</a></li>
-							<li><a href="#" class="justify-content-between align-items-center d-flex">
-									<p>Lifestyle</p> <span>24</span>
-								</a></li>
-							<li><a href="#" class="justify-content-between align-items-center d-flex">
-									<p>Fashion</p> <span>59</span>
-								</a></li>
-							<li><a href="#" class="justify-content-between align-items-center d-flex">
-									<p>Art</p> <span>29</span>
-								</a></li>
-							<li><a href="#" class="justify-content-between align-items-center d-flex">
-									<p>Food</p> <span>15</span>
-								</a></li>
-							<li><a href="#" class="justify-content-between align-items-center d-flex">
-									<p>Architecture</p> <span>09</span>
-								</a></li>
-							<li><a href="#" class="justify-content-between align-items-center d-flex">
-									<p>Adventure</p> <span>44</span>
+							<li v-for="cat in data_all_category"><a :href=`${base_url}`+`category/`+`${cat.node.titre}` class="justify-content-between align-items-center d-flex">
+									<p>${ cat.node.titre }</p> <span>${ cat.node.articles.totalCount }</span>
 								</a></li>
 						</ul>
 					</div>
@@ -561,4 +326,86 @@
 	</div>
 	<!-- Start main body Area -->
 {% endblock content %}
-    
+
+
+{% block vue %}
+<script>
+var app = new Vue({
+    el: '#app',
+    data: {
+        loader: true,
+        content:false,
+        base_url:"",
+        data_all_category:[],
+        data_all_articles:[]
+    },
+    delimiters: ["${","}"],
+    mounted(){
+        this.getdata()
+    },
+    methods: {
+        getdata: function(){
+            this.base_url = 'http://127.0.0.1:8000/'
+            console.log('data getting')
+            axios.defaults.xsrfCookieName = 'csrftoken'
+            axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+            
+
+            axios({
+                url: this.base_url + 'graphql',
+                method: 'post',
+                data: {
+                    query: `
+                    query{
+							allArticles {
+								edges {
+								node {
+									titre
+									titreSlug
+									photo
+									categorieId {
+									titre
+									id
+									}
+									dateAdd
+									description
+									commentaires{
+									totalCount
+									}
+									likes{
+									totalCount
+									}
+								}
+								}
+							},
+							allCategories{
+								edges{
+								node{
+									id
+									titre
+									image
+									articles {
+									totalCount
+									}
+								}
+								}
+							}
+						}
+                    `
+                }
+            })
+            .then(response => {
+                result = response.data.data
+                this.data_all_category = result.allCategories.edges
+				this.data_all_articles = result.allArticles.edges
+                console.log(this.data_all_category)
+				console.log(this.data_all_articles)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        },
+    }
+})
+</script>
+{% endblock vue %}

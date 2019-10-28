@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'contact.apps.ContactConfig',
     'statistique.apps.StatistiqueConfig',
     'entreprise',
-    
     'tinymce',
     'filebrowser',
     'django_admin_generator',
@@ -62,6 +61,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
 
 
+    'rest_framework',
+    'api.apps.ApiConfig',
+    'django_filters',
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
