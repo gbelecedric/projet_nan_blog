@@ -131,7 +131,8 @@
 				<div class="col-lg-8 post-list">
 					<!-- Start Post Area -->
 					<section class="post-area">
-						<div v-for="article in data_all_articles" class="single-post-item">
+
+						<div v-if="message" v-for="article in data_all_articles" class="single-post-item">
 							<figure>
 								<img class="post-img img-fluid" :src=`${base_url}`+`media/`+`${article.node.photo}` alt="">
 							</figure>
@@ -213,10 +214,12 @@
 
 				<div class="col-lg-4 sidebar">
 					<div class="single-widget search-widget">
-						<form class="example" action="#" style="margin:auto;max-width:300px">
-							<input type="text" placeholder="Search Posts" name="search2">
-							<button type="submit"><i class="fa fa-search"></i></button>
+						<form class="example"  style="margin:auto;max-width:300px">
+							
+							<input v-model="titre" type="text" placeholder="Search Posts" name="titre">
+							<button v-on:click="Articles()"  type="button"><i class="fa fa-search"></i></button>
 						</form>
+						
 					</div>
 
 					<div class="single-widget protfolio-widget">
@@ -294,8 +297,12 @@
 						<ul>
 							<li v-for="cat in data_all_category"><a :href=`${base_url}`+`category/`+`${cat.node.titre}` class="justify-content-between align-items-center d-flex">
 									<p>${ cat.node.titre }</p> <span>${ cat.node.articles.totalCount }</span>
+									
 								</a></li>
 						</ul>
+						
+						
+						
 					</div>
 
 					<div class="single-widget newsletter-widget">
@@ -336,14 +343,85 @@ var app = new Vue({
         loader: true,
         content:false,
         base_url:"",
+		titre: '',
+		all_category: [],
         data_all_category:[],
-        data_all_articles:[]
+        data_all_articles:[],
+		data_articles:[],
+		message:false,
+		
     },
     delimiters: ["${","}"],
     mounted(){
-        this.getdata()
+
+		this.titre = "{{ titre }}";
+        this.getdata();
     },
     methods: {
+		Articles: function(){
+            this.base_url = 'http://127.0.0.1:8000/'
+            console.log('data getting')
+            axios.defaults.xsrfCookieName = 'csrftoken'
+            axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+            
+
+            axios({
+                url: this.base_url + 'graphql',
+                method: 'post',
+                data: {
+                    query: `
+                    query{
+						single:allArticles(titre: "${ this.titre }") {
+							edges {
+							node {
+								titre
+								titreSlug
+									description
+									photo
+									dateAdd
+									description
+									commentaires {
+										totalCount
+									}
+									likes {
+										totalCount
+									}
+								
+							}
+							}
+						}
+						allCategories {
+							edges {
+							node {
+								id
+								titre
+								image
+								articles {
+								totalCount
+								}
+							}
+							}
+						}
+						}
+						
+                    `
+                }
+            })
+            .then(response => {
+
+                result = response.data.data
+                this.data_all_category = result.allCategories.edges
+				this.data_all_articles = result.single.edges[0]
+				this.content=true
+				this.message=true
+                console.log(this.data_all_category)
+				console.log(this.data_all_articles)
+				console.log("fin")
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        },
         getdata: function(){
             this.base_url = 'http://127.0.0.1:8000/'
             console.log('data getting')
@@ -405,7 +483,8 @@ var app = new Vue({
                 console.log(err);
             })
         },
-    }
+    },
+	
 })
 </script>
 {% endblock vue %}
