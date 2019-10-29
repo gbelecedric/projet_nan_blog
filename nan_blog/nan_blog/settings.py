@@ -196,4 +196,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, '../static_cdn')
 
 SITE_ID = 2
 
-LOGIN_REDIRECT_URL ="blog:element"
+LOGIN_REDIRECT_URL ="comptes:profil_util"

@@ -16,7 +16,7 @@ new Vue({
     },
     delimiters: ["${", "}"],
     mounted(){
-        // this.getContact()
+    
     },
     methods: {
         handleFileUpload:function(){
@@ -144,9 +144,9 @@ new Vue({
                     this.isSuccess=true
                     this.error=false
                     this.messageRes=response.data.message
-                    // console.log('Ok Goog')
+                    console.log('Ok Goog')
 
-                    window.location = "http://127.0.0.1:8000/profile/";
+                    window.location = "http://127.0.0.1:8000/comptes/profile/";
 
                 }
                 else{

@@ -1,45 +1,151 @@
-{% extends 'bases/base_profil.html' %}
+{% extends 'bases/bases.html' %}
 
 {% block content %}
 
+
+<!-- <body data-spy="scroll" data-target=".navbar-collapse" > -->
+
+	<!-- preloader section -->
+	<div class="preloader">
+		<div class="sk-spinner sk-spinner-wordpress">
+		<span class="sk-inner-circle"></span>
+		</div>
+	</div>
+
+	<!-- header section -->
+	<!-- Start header Area -->
+    
+
+
 	<!-- about and skills section -->
-<section class="container">
-		<div class="row">
-			<div class="col-md-6 col-sm-12">
-				<div class="about">
-					<h3 class="accent">Easy Profile</h3>
-					<h2>Bootstrap v3.3.5</h2>
-					<p>This easy HTML profile is brought to you by templatemo website. There are 4 color themes, <a href="index-green.html">Green</a>, <a href="index.html">Blue</a>, <a href="index-gray.html">Gray</a>, and <a href="index-orange.html">Orange</a>. Sed vitae dui in neque elementum tempor eu id risus. Phasellus sed facilisis lacus, et venenatis augue.</p>
+
+
+
+<section class="banner-area relative">
+	<div class="overlay overlay-bg"></div>
+	<div class="container box_1170">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">
+					Profile
+				</h1>
+				<p class="text-white link-nav"><a href="">Home </a>
+					<span class="lnr lnr-arrow-right"></span> <a href="">
+					Profile</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section style="background-image:url(/static/profil/images/tm-bg-slide-1.jpg)">
+
+		<div class="container p-4">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<img src="/static/profil/images/tm-easy-profile.jpg" class="rounded mx-auto d-block p-3" alt="templatemo easy profile">
+					<hr>
 				</div>
 			</div>
-			<div class="col-md-6 col-sm-12">
-				<div class="skills">
-					<h2 class="white">Skills</h2>
-					<strong>PHP MySQL</strong>
-					<span class="pull-right">70%</span>
-						<div class="progress">
-							<div class="progress-bar progress-bar-primary" role="progressbar" 
-							aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
+			<div class="row">
+				<div class="col-md-8">
+					<h1 class="tm-title bold shadow mb-4">{{ user.username }}</h1>
+					<h1 class="white bold shadow mb-4">Creative Director</h1>
+				</div>
+				<div class="col-md-4">
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Modifier Votre Infos</button>
+					
+					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Modifier vos donnees</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>
 						</div>
-					<strong>UI/UX Design</strong>
-					<span class="pull-right">85%</span>
-						<div class="progress">
-							<div class="progress-bar progress-bar-primary" role="progressbar" 
-							aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
+						<div class="modal-body">
+							<div id="appfat">
+								<form class="form-area" enctype="multipart/form-data" class="contact-form text-right"> {% csrf_token %}
+									<div class="row">
+										<div class="col-lg-10 form-group">
+											<input type="text" name="first_name" v-model.trim="form.first_name" placeholder="Nom" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your First Name'"
+											class="common-input mb-20 form-control">
+
+											<input type="text" name="last_name" v-model.trim="form.last_name" placeholder="Prenom" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your Las Name'"
+											class="common-input mb-20 form-control" >
+
+											<input name="username" v-model.trim="form.username" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your Username'"
+											class="common-input mb-20 form-control" type="text">
+											<!-- pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" -->
+											<input type="text" name="email" v-model.trim="form.email" placeholder="Email Address" 
+											onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control"
+											>
+
+											<input type="file" name="file" ref="file"  placeholder="" class="common-input mb-20 form-control">
+
+											<input type="password" name="password" v-model.trim="form.password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your password'"
+											class="common-input mb-20 form-control" >
+
+											<input type="password" name="password2" v-model.trim="form.password2" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm password'"
+											class="common-input mb-20 form-control" >
+
+										</div>
+        
+										<div class="col-lg-12 d-flex justify-content-between">
+											<button class="genric-btn danger circle text-uppercase" data-dismiss="modal">Close</button>
+											<button class="genric-btn primary circle text-uppercase">Register</button>
+										</div>
+									</div>
+								</form>
+							</div>
 						</div>
-					<strong>Bootstrap</strong>
-					<span class="pull-right">95%</span>
-						<div class="progress">
-							<div class="progress-bar progress-bar-primary" role="progressbar" 
-							aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
 						</div>
+					</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+
+
+	<!-- <section class="container">
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="about">
+						<h3 class="accent">Easy Profile</h3>
+						<h2>Bootstrap v3.3.5</h2>
+						<p>This easy HTML profile is brought to you by templatemo website. There are 4 color themes, <a href="index-green.html">Green</a>, <a href="index.html">Blue</a>, <a href="index-gray.html">Gray</a>, and <a href="index-orange.html">Orange</a>. Sed vitae dui in neque elementum tempor eu id risus. Phasellus sed facilisis lacus, et venenatis augue.</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="skills">
+						<h2 class="white">Skills</h2>
+						<strong>PHP MySQL</strong>
+						<span class="pull-right">70%</span>
+							<div class="progress">
+								<div class="progress-bar progress-bar-primary" role="progressbar" 
+								aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
+							</div>
+						<strong>UI/UX Design</strong>
+						<span class="pull-right">85%</span>
+							<div class="progress">
+								<div class="progress-bar progress-bar-primary" role="progressbar" 
+								aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
+							</div>
+						<strong>Bootstrap</strong>
+						<span class="pull-right">95%</span>
+							<div class="progress">
+								<div class="progress-bar progress-bar-primary" role="progressbar" 
+								aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
+							</div>
+					</div>
+				</div>
+			</div>
+	</section> -->
 	
 	<!-- education and languages -->
-	<section class="container">
+	<!-- <section class="container">
 		<div class="row">
 			<div class="col-md-8 col-sm-12">
 				<div class="education">
@@ -66,10 +172,10 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	
 	<!-- contact and experience -->
-	<section class="container">
+	<!-- <section class="container">
 		<div class="row">
 			<div class="col-md-4 col-sm-12">
 				<div class="contact">
@@ -92,7 +198,10 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
+
+</section>
+
 {% endblock content %}
 	
 

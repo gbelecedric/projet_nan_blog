@@ -29,9 +29,6 @@ def detail(request , titre):
     comment7 = Commentaire.objects.filter(article_id = article).order_by('-date_add')[5::]
    
 
-    
-
-
     data={
         
     
@@ -59,12 +56,6 @@ def archive(request):
     
     data={}
     return render(request, 'pages/blog/archive.html',data)
-
-@login_required(login_url='comptes:login_visit')
-def element(request):
-    
-    data={}
-    return render(request, 'pages/profil/index.html',data)
 
 
 def dashbord(request):
@@ -137,6 +128,8 @@ def senduserimage(request , id):
 
    
     return JsonResponse(data, safe=False)
+
+    
 def sendreply(request , id):
     # print(id)
     # # postdata = json.loads(request.body.decode('utf-8'))
@@ -187,9 +180,3 @@ def sendreply(request , id):
 
    
     return JsonResponse(data, safe=False)
-
-
-def prof(request):
-    
-    data={}
-    return render(request, 'pages/profil/index.html',data)
