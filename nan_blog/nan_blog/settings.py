@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'blog.apps.BlogConfig',
     'comptes.apps.ComptesConfig',
     'configuration.apps.ConfigurationConfig',
@@ -47,6 +48,19 @@ INSTALLED_APPS = [
     'tinymce',
     'filebrowser',
     'django_admin_generator',
+
+
+    # allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # provider  
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.github',
+
+
     'rest_framework',
     'api.apps.ApiConfig',
     'django_filters',
@@ -176,3 +190,10 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '../media_cdn')
 STATIC_ROOT = os.path.join(BASE_DIR, '../static_cdn') 
+
+
+
+
+SITE_ID = 2
+
+LOGIN_REDIRECT_URL ="comptes:profil_util"

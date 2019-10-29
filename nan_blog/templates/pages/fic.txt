@@ -1,0 +1,19 @@
+Social Application
+
+Nom:  LoginGithub / 1d0cb9910ac0214d5438/ 0ad1e88a9160ba8a6d399ab12118a864ea5990e7 /
+
+
+
+ConnexionGoogle / 754965216151-fni2si90k579imamhhbkkhgbsf2if283.apps.googleusercontent.com / KR360Qsz62oB4zRQfesmGa7k
+
+
+
+
+FacebookLogin / 388632498707187 / ff6da8f256dc066c2aaa7fb125df4fb6
+
+
+
+
+http://localhost:8000/     et   localhost
+
+
