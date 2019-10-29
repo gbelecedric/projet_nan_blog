@@ -58,18 +58,6 @@ def archive(request):
     data={}
     return render(request, 'pages/blog/archive.html',data)
 
-def voirplus(request):
-    allartiacle = Article.objects.filter(status=True)
-    paginator = Paginator(allartiacle, 9)
-    page = request.GET.get('page') 
-
-    allartiacle = paginator.get_page(page)
-    
-    data={
-        'allartiacle': allartiacle,
-    }
-    return render(request, 'pages/blog/voirplus.html',data)
-
 def ajout(request):
     categorie = Categorie.objects.filter(status=True)
     tag = Tag.objects.filter(status=True)
