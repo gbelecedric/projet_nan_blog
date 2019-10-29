@@ -64,7 +64,7 @@ def archive(request):
 def element(request):
     
     data={}
-    return render(request, 'pages/blog/element.html',data)
+    return render(request, 'pages/profil/index.html',data)
 
 
 def dashbord(request):

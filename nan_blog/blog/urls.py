@@ -10,11 +10,11 @@ urlpatterns = [
     path('postimage/<int:id>', views.senduserimage, name='postimage'),
     path('postreply/<int:id>', views.sendreply, name='postreply'),
     path('dashborads/', views.archive, name='archive'),
-    path('profile/', views.element, name='element'),
+    path('profile/', views.element, name='profile'),
     path('dashbord', views.dashbord, name='dashbord'),
     path('dashpost', views.dashpost, name='dashpost'),
     path('dashdetail', views.dashdetail, name='dashdetail'),
-    path('prof', views.prof, name='prof'),
+    # path('prof', views.prof, name='prof'),
     path('error', views.error, name='error'),
 
 
