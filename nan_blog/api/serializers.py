@@ -103,7 +103,7 @@ class TagSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CategorieSerializer(serializers.ModelSerializer):
-    categorie = ArticleSerializer(many=True, required=False)
+    articles = ArticleSerializer(many=True, required=False)
     class Meta:
         model = Categorie
         fields = '__all__'

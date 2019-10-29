@@ -84,15 +84,18 @@
 					<ul class="nav-menu">
 						<li class="menu-active"><a href="{% url 'blog:home' %}">Home</a></li>
 					
-						<li><a href="{% url 'blog:archive' %}">Dashborad</a></li>
-						
-						<li><a href="{% url 'comptes:profil_util' %}">Profile</a></li>
-						
-						
-						<li><a href="{% url 'contact:contact' %}">Contact</a></li>
+						{% if user.is_authenticated %}
+						<li><a href="{% url 'blog:dashbord' %}">Dashborad</a></li>
+						<li><a href="{% url 'comptes:modif_profil' %}">Profile</a></li>
+						{% else %}
+
 						<li><a href="{% url 'comptes:register' %}">Register</a></li>
 						<li><a href="{% url 'comptes:login_visit' %}">Login</a></li>
+						{% endif %}
+						<li><a href="{% url 'contact:contact' %}">Contact</a></li>
+						{% if user.is_authenticated %}
 						<li><a href="{% url 'comptes:logout_you' %}">Deconnexion</a></li>
+						{% endif %}
 					</ul>
 				</nav>
 			</div>

@@ -17,7 +17,7 @@ urlpatterns = [
     path('voirplus', views.voirplus, name='voirplus'),
     path('ajout', views.ajout, name='ajout'),
     
-    path('modif_profil/', views.modif_profil, name='modif_profil'),
+    #path('modif_profil/', views.modif_profil, name='modif_profil'),
 
 ]
   

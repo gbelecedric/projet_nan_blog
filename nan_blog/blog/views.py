@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.models import User
 from .models import *
 from django.core.paginator import Paginator
 
@@ -60,7 +60,7 @@ def archive(request):
 
 def voirplus(request):
     allartiacle = Article.objects.filter(status=True)
-    paginator = Paginator(allartiacle, 10)
+    paginator = Paginator(allartiacle, 9)
     page = request.GET.get('page') 
 
     allartiacle = paginator.get_page(page)
@@ -71,8 +71,12 @@ def voirplus(request):
     return render(request, 'pages/blog/voirplus.html',data)
 
 def ajout(request):
-    
-    data={}
+    categorie = Categorie.objects.filter(status=True)
+    tag = Tag.objects.filter(status=True)
+    data={
+        'categorie': categorie,
+        'tag': tag,
+    }
     return render(request, 'pages/dashbord/ajout.html',data)
 
 def element(request):
@@ -86,8 +90,12 @@ def dashbord(request):
     return render(request, 'pages/dashbord/dashbord.html',data)
 
 def dashpost(request):
-    
-    data={}
+    userarticle = User.objects.all()
+    #print(userarticle.ctegorieuser.articles.all)
+    data={
+        'userarticle': userarticle,
+    }
+
     return render(request, 'pages/dashbord/posts.html',data)
 
 def dashdetail(request):

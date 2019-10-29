@@ -27,7 +27,7 @@ class Tag(Timemodels):
 class Categorie(Timemodels):
     titre =  models.CharField(max_length=255)
     image = models.ImageField(upload_to='categorie',)
-    nom =  models.ForeignKey(User,on_delete=models.CASCADE)
+    nom =  models.ForeignKey(User,on_delete=models.CASCADE, related_name='ctegorieuser')
     
     class Meta:
         verbose_name = 'Categorie'
