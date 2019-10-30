@@ -252,11 +252,11 @@
 
                     axios.defaults.xsrfCookieName = 'csrftoken'
                     axios.defaults.xsrfHeaderName = 'X-CSRFToken'
-                    axios.post('http://127.0.0.1:8000/postlike', {
-                        name: '' + this.name,
+                    axios.post('http://127.0.0.1:8000/postlike/{{article.titre_slug}},{{user}}', {
+                    
 
                         }).then(response => {
-                                    
+                                 
                             console.log(response)
                             this.result= response.data;
                             console.log(this.result.success)

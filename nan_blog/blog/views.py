@@ -8,7 +8,7 @@ from statistique.models import *
 from django.core.paginator import Paginator
 import socket 
 import string 
-
+import requests
 import json
 from django.utils.text import slugify 
 import requests
@@ -212,7 +212,15 @@ def sendreply(request , id):
     return JsonResponse(data, safe=False)
 
 def senddata(request):
+    if not request.user.is_authenticated:
+        access = "PETIT VISIEUX"
+
     
+    else:
+
+
+        user = request.user
+        users = int(user.last_name)
     postdata = json.loads(request.body.decode('utf-8'))
     
     # name = postdata['name']
