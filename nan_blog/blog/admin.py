@@ -8,6 +8,8 @@ class TagAdmin(admin.ModelAdmin):
 
     list_display = ('id', 'date_add', 'date_update', 'status', 'nom')
     list_filter = (
+        
+    
         'date_add',
         'date_update',
         'status',
@@ -49,7 +51,7 @@ class CategorieAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
     list_display = (
       
-    
+      
         'nb_com',
         'nb_like',
       

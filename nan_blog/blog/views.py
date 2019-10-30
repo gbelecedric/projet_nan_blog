@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import *
+from statistique.models import *
 from django.core.paginator import Paginator
 import socket 
 import string 
@@ -11,18 +12,17 @@ from django.utils.text import slugify
 import requests
 # Create your views here.
 def home(request):
+ 
     
     data={}
-      
 
-
-    
     return render(request, 'pages/blog/index.html',data)
    
 
 def detail(request , titre):
     
-    
+    nbr_vue = Visitor_Infos_user.objects.filter(page_visited="/details/{}".format(titre)).count()
+    print(nbr_vue)
     # lien = Link.objects.filter(status=True).order_by('-date_add')
     # image = Background.objects.filter(status=True).order_by('-date_add')
     maxim = Article.objects.filter(status=True).order_by('-nb_like') 
@@ -39,6 +39,8 @@ def detail(request , titre):
    
 
     data={
+        "nbr_vue":nbr_vue,
+    
         
     
         'verif':len(comment7),

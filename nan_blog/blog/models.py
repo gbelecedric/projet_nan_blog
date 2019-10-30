@@ -66,6 +66,7 @@ class Article(models.Model):
         n = self.commentaires.all().count()
       
         return n
+
   
 
 
