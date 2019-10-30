@@ -15,6 +15,7 @@ urlpatterns = [
     path('dashdetail', views.dashdetail, name='dashdetail'),
     path('error', views.error, name='error'),
     path('ajout', views.ajout, name='ajout'),
+    path('postlike', views.senddata,name='postlike'),
     
     #path('modif_profil/', views.modif_profil, name='modif_profil'),
 

@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import *
+from django.http import JsonResponse
+import json
 from statistique.models import *
 from django.core.paginator import Paginator
 import socket 
@@ -208,3 +210,30 @@ def sendreply(request , id):
 
    
     return JsonResponse(data, safe=False)
+
+def senddata(request):
+    
+    postdata = json.loads(request.body.decode('utf-8'))
+    
+    # name = postdata['name']
+    
+    name = postdata['name']
+
+    isSuccess=False
+    
+    if name is not None :
+        isSuccess=True
+        if password == password1:
+            users=Like(name=name)
+            users.save()
+    else:
+        isSuccess=False
+    
+    
+    datas = {
+        'success':True,
+        'name':name
+    }
+    
+    
+    return JsonResponse(datas, safe=False)
