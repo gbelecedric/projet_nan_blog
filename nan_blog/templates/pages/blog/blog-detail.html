@@ -138,81 +138,51 @@
                     </div>
     
                     <div class="col-lg-4 sidebar">
-                        <div class="single-widget search-widget">
-                            <form class="example" action="#" style="margin:auto;max-width:300px">
-                                <input type="text" placeholder="Search Posts" name="search2">
-                                <button type="submit"><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
-    
+                     
+                            {% for m in maxim %}
+                            {% if forloop.counter <= 1 %}
                         <div class="single-widget protfolio-widget">
                             <img class="img-fluid" src="/static/img/blog/user2.png" alt="">
                             <a href="#">
-                                <h4>Charlie ALison Barber</h4>
+                                <h4>{{m.nom.username}}</h4>
                             </a>
+                            <br>
                             <div class="desigmation">
                                 <p>Senior blog writer</p>
                             </div>
+                            <br>
                             <p>
-                                Boot camps have its supporters andit sdetractors. Some people do not understand why you
-                                should have to spend
-                                money on boot camp whenyou can get. Boot camps have itssuppor ters andits detractors.
+                                {{m.titre}}
                             </p>
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            </ul>
+                            <br>
+
+                            <p>
+                                    {{m.description|truncatewords:15}}
+                                </p>
+                                <br>
+                            <button type="button" class="btn btn-outline-success btn-rounded waves-effect">Suivre</button>
                         </div>
+                        {% endif %}
+                        {% endfor %}
     
                         <div class="single-widget popular-posts-widget">
                             <h4 class="title">Popular Posts</h4>
                             <div class="blog-list ">
+                                {% for m in maxim %}
+                                {% if forloop.counter <= 4 %}
                                 <div class="single-popular-post d-flex flex-row">
                                     <div class="popular-thumb">
                                         <img class="img-fluid" src="/static/img/blog/r1.jpg" alt="">
                                     </div>
                                     <div class="popular-details">
                                         <a href="blog-details.html">
-                                            <h4>Space Final Frontier</h4>
+                                            <h4>{{m.titre|truncatewords:3}}</h4>
                                         </a>
-                                        <p class="text-uppercase">02 hours ago</p>
+                                        <p class="text-uppercase">{{m.date_add}}</p>
                                     </div>
                                 </div>
-                                <div class="single-popular-post d-flex flex-row">
-                                    <div class="popular-thumb">
-                                        <img class="img-fluid" src="/static/img/blog/r2.jpg" alt="">
-                                    </div>
-                                    <div class="popular-details">
-                                        <a href="blog-details.html">
-                                            <h4>The Amazing Hubble</h4>
-                                        </a>
-                                        <p class="text-uppercase">02 hours ago</p>
-                                    </div>
-                                </div>
-                                <div class="single-popular-post d-flex flex-row">
-                                    <div class="popular-thumb">
-                                        <img class="img-fluid" src="/static/img/blog/r3.jpg" alt="">
-                                    </div>
-                                    <div class="popular-details">
-                                        <a href="blog-details.html">
-                                            <h4>Astronomy Astrology</h4>
-                                        </a>
-                                        <p class="text-uppercase">02 hours ago</p>
-                                    </div>
-                                </div>
-                                <div class="single-popular-post d-flex flex-row">
-                                    <div class="popular-thumb">
-                                        <img class="img-fluid" src="/static/img/blog/r4.jpg" alt="">
-                                    </div>
-                                    <div class="popular-details">
-                                        <a href="blog-details.html">
-                                            <h4>Asteroids telescope</h4>
-                                        </a>
-                                        <p class="text-uppercase">02 hours ago</p>
-                                    </div>
-                                </div>
+                                {% endif %}
+                              {% endfor %}
                             </div>
                         </div>
     
@@ -222,7 +192,7 @@
                                    
                                     {% for cat in categorie %}
                                 <li><a href="#" class="justify-content-between align-items-center d-flex">
-                                        <p>{{cat.titre}}</p> <span>{{cat.categorie.count}}</span>
+                                        <p>{{cat.titre}}</p> <span>{{cat.articles.count}}</span>
                                     </a></li>
                                     {% endfor %}
                                  

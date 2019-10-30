@@ -21,19 +21,37 @@
 	<!--
 			CSS
 			============================================= -->
-			<link rel="stylesheet" href="/static/css/linearicons.css">
-			<link rel="stylesheet" href="/static/css/font-awesome.min.css">
-			<link rel="stylesheet" href="/static/css/bootstrap.css">
-			<link rel="stylesheet" href="/static/css/magnific-popup.css">
-			<link rel="stylesheet" href="/static/css/nice-select.css">
-			<link rel="stylesheet" href="/static/css/animate.min.css">
-			<link rel="stylesheet" href="/static/css/owl.carousel.css">
-			<link rel="stylesheet" href="/static/css/main.css">
-			<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-			<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-design-blocks/2.0.1/css/froala_blocks.min.css">
-			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+	<link rel="stylesheet" href="/static/css/linearicons.css">
+	<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/css/bootstrap.css">
+	<link rel="stylesheet" href="/static/css/magnific-popup.css">
+	<link rel="stylesheet" href="/static/css/nice-select.css">
+	<link rel="stylesheet" href="/static/css/animate.min.css">
+	<link rel="stylesheet" href="/static/css/owl.carousel.css">
+	<link rel="stylesheet" href="/static/css/main.css">
+
+
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+
+	<!-- Custom Theme files -->
+	 <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- //Custom Theme files -->
+
+	<!-- web font -->
+	<!-- <link href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet"> -->
+	<!-- //web font -->
+
+
+
 </head>
 
 <body>
@@ -47,13 +65,19 @@
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
 						<li class="menu-active"><a href="{% url 'blog:home' %}">Home</a></li>
-					
+						
+						{% if user.is_authenticated %}
 						<li><a href="{% url 'blog:dashbord' %}">Dashborad</a></li>
-						
-						<li><a href="{% url 'blog:element' %}">Profile</a></li>
-						
-						
+						<li><a href="{% url 'comptes:profil_util' %}">Profile</a></li>
+						{% else %}
+
+						<li><a href="{% url 'comptes:register' %}">Register</a></li>
+						<li><a href="{% url 'comptes:login_visit' %}">Login</a></li>
+						{% endif %}
 						<li><a href="{% url 'contact:contact' %}">Contact</a></li>
+						{% if user.is_authenticated %}
+						<li><a href="{% url 'comptes:logout_you' %}">Deconnexion</a></li>
+						{% endif %}
 					</ul>
 				</nav>
 			</div>
@@ -149,6 +173,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="/static/js/waypoints.min.js"></script>
 	<script src="/static/js/mail-script.js"></script>
 	<script src="/static/js/main.js"></script>
+
+
+	<!-- VueJs et Axios -->
+	<script src="/static/vuejs/vue.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> --> <!-- C'est le cdn de VueJs mais j'ai opte pour vueJs en local -->
+	
+	<script src="/static/vuejs/axios-min.js"></script>
+	<!-- Fin VueJs et Axios -->
+
+	<script src="/static/vuejs/indexfat.js"></script>
+
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
 	{% block vue %}

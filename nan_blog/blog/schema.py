@@ -4,6 +4,7 @@ from graphene import relay, ObjectType, Connection, Node, Int
 from graphene_django import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 
+
 from .models import *
 
 # Graphene will automatically map the Article model's fields onto the ArticleNode.
@@ -20,6 +21,8 @@ class ExtendedConnection(Connection):
     def resolve_edge_count(root, info, **kwargs):
         return len(root.edges)
 
+
+
 class CategorieNode(DjangoObjectType):
     class Meta:
         model = Categorie
@@ -28,12 +31,17 @@ class CategorieNode(DjangoObjectType):
         connection_class = ExtendedConnection
 
 
+
 class ArticleNode(DjangoObjectType):
     class Meta:
         model = Article
-        filter_fields = ['titre',]
+        filter_fields = {
+            'titre': ['exact', 'icontains', 'istartswith'],
+        }
         interfaces = (relay.Node, )
         connection_class = ExtendedConnection
+
+
 
 
 class TagNode(DjangoObjectType):

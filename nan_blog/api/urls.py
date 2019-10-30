@@ -20,7 +20,7 @@ from .import views
 
 from rest_framework.routers import DefaultRouter
 
-from .apiviews import CategorieViewSet, TagViewSet, ArticleViewSet, CommentaireViewSet, ReplyViewSet, FavorisViewSet, Visiteur_InfosViewSet, MessageViewSet, NewsletterViewSet, LinkViewSet, InfoViewSet, instagram_feedViewSet, FooterViewSet, BackgroundViewSet, HomeViewSet, MembreViewSet
+from .apiviews import CategorieViewSet, TagViewSet, ArticleViewSet, CommentaireViewSet, ReplyViewSet, FavorisViewSet, Visitor_InfosViewSet, MessageViewSet, NewsletterViewSet, LinkViewSet, InfoViewSet, instagram_feedViewSet, FooterViewSet, BackgroundViewSet, HomeViewSet, MembreViewSet
 
 
 router = DefaultRouter()
@@ -30,7 +30,7 @@ router.register('article', ArticleViewSet, base_name='article')
 router.register('commentaire', CommentaireViewSet, base_name='commentaire')
 router.register('reply', ReplyViewSet, base_name='reply')
 router.register('favoris', FavorisViewSet, base_name='favoris')
-router.register('infovisiteur', Visiteur_InfosViewSet, base_name='infovisiteur')
+router.register('infovisiteur', Visitor_InfosViewSet, base_name='infovisiteur')
 router.register('message', MessageViewSet, base_name='message')
 router.register('newsletter', NewsletterViewSet, base_name='newsletter')
 router.register('link', LinkViewSet, base_name='link')

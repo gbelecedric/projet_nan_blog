@@ -10,13 +10,13 @@ urlpatterns = [
     path('postimage/<int:id>', views.senduserimage, name='postimage'),
     path('postreply/<int:id>', views.sendreply, name='postreply'),
     path('dashborads/', views.archive, name='archive'),
-    path('profile/', views.element, name='element'),
     path('dashbord', views.dashbord, name='dashbord'),
     path('dashpost', views.dashpost, name='dashpost'),
     path('dashdetail', views.dashdetail, name='dashdetail'),
     path('error', views.error, name='error'),
+    path('ajout', views.ajout, name='ajout'),
     
-    path('modif_profil/', views.modif_profil, name='modif_profil'),
+    #path('modif_profil/', views.modif_profil, name='modif_profil'),
 
 ]
   

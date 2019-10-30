@@ -10,7 +10,7 @@ from entreprise.models import *
 from statistique.models import *
 from .models import *
 
-from .serializers import CategorieSerializer, TagSerializer, ArticleSerializer, CommentaireSerializer, ReplySerializer, FavorisSerializer, Visiteur_InfosSerializer, MessageSerializer, NewsletterSerializer, LinkSerializer, InfoSerializer, instagram_feedSerializer, FooterSerializer, BackgroundSerializer, HomeSerializer, MembreSerializer
+from .serializers import CategorieSerializer, TagSerializer, ArticleSerializer, CommentaireSerializer, ReplySerializer, FavorisSerializer, Visitor_InfosSerializer, MessageSerializer, NewsletterSerializer, LinkSerializer, InfoSerializer, instagram_feedSerializer, FooterSerializer, BackgroundSerializer, HomeSerializer, MembreSerializer
 
 
 class DynamicSearchFilter(filters.SearchFilter):
@@ -41,9 +41,9 @@ class FavorisViewSet(viewsets.ModelViewSet):
     queryset = Favoris.objects.all()
     serializer_class = FavorisSerializer
 
-class Visiteur_InfosViewSet(viewsets.ModelViewSet):
-    queryset = Visiteur_Infos.objects.all()
-    serializer_class = Visiteur_InfosSerializer
+class Visitor_InfosViewSet(viewsets.ModelViewSet):
+    queryset = Visitor_Infos.objects.all()
+    serializer_class = Visitor_InfosSerializer
 
 class MessageViewSet(viewsets.ModelViewSet):
     queryset = Message.objects.all()

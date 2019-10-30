@@ -66,9 +66,9 @@ class MessageSerializer(serializers.ModelSerializer):
 
 #=============== App Statistique ==============#
 
-class Visiteur_InfosSerializer(serializers.ModelSerializer):
+class Visitor_InfosSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Visiteur_Infos
+        model = Visitor_Infos
         fields = '__all__'
 
 
@@ -103,7 +103,7 @@ class TagSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CategorieSerializer(serializers.ModelSerializer):
-    categorie = ArticleSerializer(many=True, required=False)
+    articles = ArticleSerializer(many=True, required=False)
     class Meta:
         model = Categorie
         fields = '__all__'

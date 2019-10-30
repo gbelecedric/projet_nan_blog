@@ -3,7 +3,7 @@
 {% block dashbord %}
 
 
-
+    {% if user.is_authenticated %}
     <!-- page content -->
     <div class="right_col" role="main">
 
@@ -310,6 +310,6 @@
 
     <!-- /page content -->
 
-  </div>
-
+    </div>
+    {% endif %}
 {% endblock dashbord %}

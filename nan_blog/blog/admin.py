@@ -48,8 +48,13 @@ class CategorieAdmin(admin.ModelAdmin):
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = (
-        'nbr_like',
-        'nbr_comment',
+      
+    
+        'nb_com',
+        'nb_like',
+      
+    
+       
         'titre_slug',
         'id',
         'temps_de_lecture',

@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls import url
 from django.conf import settings
 from graphene_django.views import GraphQLView
 from django.conf.urls.static import static
@@ -31,6 +32,7 @@ urlpatterns = [
      path('configuration/', include('configuration.urls')),
      path('tinymce/', include('tinymce.urls')),
      path('admin/filebrowser/', site.urls),
+     url(r'^accounts/', include('allauth.urls')),
      path('api/', include('api.urls')),
      path("graphql", GraphQLView.as_view(graphiql=True, schema=schema)),
 ]
