@@ -50,7 +50,7 @@
                             <p>{{article.contenu|safe}}</p>
                             <div class="news_d_footer" >
                                 <a href="#"><i class="far fa-thumbs-up"> </i>Lily and 4 people like this</a>
-                                <a style="margin-left: 25%;" href="#" ><i class="far fa-eye"> Nombre de vues</i></a>
+                                <a style="margin-left: 25%;" href="#" ><i class="far fa-eye"> Nombre de vues ( {{nbr_vue}} )</i></a>
                                 {% if comment.count <= 9 %}
                                 <a class="justify-content-center ml-auto" href="#"><i class="lnr lnr lnr-bubble"></i>0{{comment.count}}
                                     Commentaire </a>
