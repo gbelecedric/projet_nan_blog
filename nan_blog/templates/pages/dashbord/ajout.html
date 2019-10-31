@@ -42,11 +42,12 @@
                         <label for="categorie">Categorie *:</label>
                         <select id="categorie" class="form-control" name="categorie" required>
                             <option value="">Choose..</option>
-                            
-                            <option value="Architecture">Architecture</option>
-                            <option value="Art">Art</option>
-                            <option value="Fashion">Fashion</option>
-                            <option value="Lifestyle">Lifestyle</option>
+                            {% for event in categorie %}
+                            <option value="{{ event.id }}"{% if event.id in selected_ids %}selected{% endif %}> {{ event.titre }}</option>
+   
+                              </option>
+                              {% endfor %}
+                           </select>
                             
                         </select><br>
 
@@ -54,10 +55,11 @@
                         <select id="tag" class="form-control" name="tag" required multiple>
                             <option value="" style="color: gray">Choisisez les Tags..</option>
                             
-                            <option value="tenis">tenis</option>
-                            <option value="lien29">lien29</option>
-                            <option value="sport nan">sport nan</option>
-                            <option value="option4">option4</option>
+                            {% for event in tag %}
+                            <option value="{{ event.id }}"{% if event.id in selected_ids %}selected{% endif %}> {{ event.nom }}</option>
+   
+                              </option>
+                              {% endfor %}
                             
                         </select><br>
     

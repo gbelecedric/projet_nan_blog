@@ -15,6 +15,7 @@ def save_visitor_infos(request):
         else:
             ip = request.META.get('REMOTE_ADDR')    
         #----- check if ip adress is valid -----#
+        
         try:
             socket.inet_aton(ip)
             ip_valid = True

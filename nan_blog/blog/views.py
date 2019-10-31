@@ -71,17 +71,17 @@ def archive(request):
     return render(request, 'pages/blog/archive.html',data)
 
 def ajout(request):
-    # categorie = Categorie.objects.filter(status=True)
-    # tag = Tag.objects.filter(status=True)
+    categorie = Categorie.objects.filter(status=True)
+    tag = Tag.objects.filter(status=True)
 
     titre = request.POST.get('titre',False)
-    # categorie_id = request.POST.get('categorie',False)
-    # tag_name = request.POST.get('tag',False)
+    categorie_id = request.POST.get('categorie',False)
+    tag_name = request.POST.get('tag',False)
     description = request.POST.get('description',False)
     image = request.POST.get('image',False)
-    #text = request.POST.get('text',False)
+    text = request.POST.get('text',False)
     isSave=False
-    print('======================',titre,description,image, '==================')
+    # print('======================'titre,description '==================')
 
     if request.method == 'POST':
         #if titre is not False and categorie_id is not False and tag_name is not False:
@@ -105,11 +105,11 @@ def ajout(request):
             print(isSave)
             print('++++++++++++++++++ erreur de sauvegarde +++++++++++++++ ')
 
-    # data={
-    #     'categorie': categorie,
-    #     'tag': tag,
-    # }
-    return render(request, 'pages/dashbord/ajout.html')
+    data={
+         'categorie': categorie,
+         'tag': tag,
+     }
+    return render(request, 'pages/dashbord/ajout.html',data)
 
 def element(request):
     
@@ -143,13 +143,31 @@ def dashpost(request):
     userarticle = User.objects.all()
     #print(userarticle.ctegorieuser.articles.all)
     userpost = Article.objects.filter(nom=user)
+    
 
     data={
         'userarticle': userarticle,
         'userpost': userpost,
+       
     }
 
     return render(request, 'pages/dashbord/posts.html',data)
+
+def dashattente(request):
+    user = request.user
+    print('+++++++++++++++',user,'+++++++++++++++++')
+    userarticle = User.objects.all()
+    #print(userarticle.ctegorieuser.articles.all)
+    userpost = Article.objects.filter(nom=user , status=False)
+    
+
+    data={
+        'userarticle': userarticle,
+        'userpost': userpost,
+       
+    }
+
+    return render(request, 'pages/dashbord/attente.html',data)
 
 def dashdetail(request):
     
