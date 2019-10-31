@@ -86,7 +86,7 @@
 					
 						{% if user.is_authenticated %}
 						<li><a href="{% url 'blog:dashbord' %}">Dashborad</a></li>
-						<li><a href="{% url 'comptes:modif_profil' %}">Profile</a></li>
+						<li><a href="{% url 'comptes:profil_util' %}">Profile</a></li>
 						{% else %}
 
 						<li><a href="{% url 'comptes:register' %}">Register</a></li>

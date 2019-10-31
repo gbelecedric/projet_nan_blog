@@ -31,6 +31,18 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8" id="appfatlog">
+                <div v-if='isSuccess' class="alert alert-success col-lg-6" role="alert">
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    ${messageRes}
+                </div>
+                <div v-if='error' class="alert alert-danger col-lg-6" role="alert">
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    ${messageRes}
+                </div>
                 <form class="form-area" v-on:submit="onsubmitLogin" class="contact-form text-right"> {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-6 form-group">
