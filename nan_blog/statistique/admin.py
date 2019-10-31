@@ -1,20 +1,27 @@
-from django.contrib import admin
-
-# Register your models here.
 # vim: set fileencoding=utf-8 :
 from django.contrib import admin
 
 from . import models
 
 
-class Visiteur_InfosAdmin(admin.ModelAdmin):
+class Visitor_Infos_userAdmin(admin.ModelAdmin):
+
+    list_display = ('id', 'ip_address', 'page_visited', 'event_date')
+    list_filter = (
+        'event_date',
+        'id',
+        'ip_address',
+        'page_visited',
+        'event_date',
+    )
+
+
+class Visitor_InfosAdmin(admin.ModelAdmin):
 
     list_display = (
         'id',
-        'date_add',
-        'date_update',
-        'status',
         'ip_address',
+        'event_date',
         'pays',
         'ville',
         'continent',
@@ -22,16 +29,14 @@ class Visiteur_InfosAdmin(admin.ModelAdmin):
         'latitude',
         'page_visited',
         'reseau_mobile',
+        'status',
     )
     list_filter = (
-        'date_add',
-        'date_update',
+        'event_date',
         'status',
         'id',
-        'date_add',
-        'date_update',
-        'status',
         'ip_address',
+        'event_date',
         'pays',
         'ville',
         'continent',
@@ -39,6 +44,7 @@ class Visiteur_InfosAdmin(admin.ModelAdmin):
         'latitude',
         'page_visited',
         'reseau_mobile',
+        'status',
     )
 
 
@@ -46,4 +52,5 @@ def _register(model, admin_class):
     admin.site.register(model, admin_class)
 
 
-_register(models.Visiteur_Infos, Visiteur_InfosAdmin)
+_register(models.Visitor_Infos_user, Visitor_Infos_userAdmin)
+_register(models.Visitor_Infos, Visitor_InfosAdmin)

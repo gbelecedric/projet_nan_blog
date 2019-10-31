@@ -34,28 +34,35 @@
                 </div>
                 <div class="x_content">
                     <!-- start form for validation -->
-                    <form id="demo-form" data-parsley-validate>
+                    <form id="demo-form" data-parsley-validate method="POST">
+                        {% csrf_token %}
                         <label for="fullname">Titre :</label>
-                        <input type="text" id="fullname" class="form-control" name="fullname" required /><br>
+                        <input type="text" id="fullname" class="form-control" name="titre" required /><br>
     
                         <label for="categorie">Categorie *:</label>
-                        <select id="categorie" class="form-control" required>
+                        <select id="categorie" class="form-control" name="categorie" required>
                             <option value="">Choose..</option>
-                            {% for cat in categorie %}
-                            <option value="press">{{ cat.titre }}</option>
-                            {% endfor %}
+                            
+                            <option value="Architecture">Architecture</option>
+                            <option value="Art">Art</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Lifestyle">Lifestyle</option>
+                            
                         </select><br>
 
                         <label for="tag">Tag *:</label>
-                        <select id="tag" class="form-control" required>
-                            <option value="">Choose..</option>
-                            {% for tg in tag %}
-                            <option value="press">{{ tg.nom }}</option>
-                            {% endfor %}
+                        <select id="tag" class="form-control" name="tag" required multiple>
+                            <option value="" style="color: gray">Choisisez les Tags..</option>
+                            
+                            <option value="tenis">tenis</option>
+                            <option value="lien29">lien29</option>
+                            <option value="sport nan">sport nan</option>
+                            <option value="option4">option4</option>
+                            
                         </select><br>
     
                         <label for="message">Description :</label>
-                        <textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                        <textarea id="message" required="required" class="form-control" name="description" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
                             data-parsley-validation-threshold="10"></textarea><br>
     
                     
@@ -132,7 +139,7 @@
                         </div>
                     </div>
 
-                    <div id="editor-one" class="editor-wrapper"></div>
+                    <div id="editor-one" class="editor-wrapper" name="text"></div>
                     
                     <textarea name="descr" id="descr" style="display:none;"></textarea>
                     <br />

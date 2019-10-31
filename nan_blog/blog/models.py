@@ -38,15 +38,15 @@ class Categorie(Timemodels):
         return self.titre
 
 class Article(models.Model):
-    temps_de_lecture = models.CharField(max_length=255)
+    temps_de_lecture = models.CharField(max_length=255, null=True)
     titre =  models.CharField(max_length=255)
-    titre_slug = models.SlugField(max_length=255,editable=False,default=uuid.uuid4,)
+    titre_slug = models.SlugField(max_length=255,editable=False,default=uuid.uuid4, null=True)
     description = models.TextField()
     categorie_id =  models.ForeignKey(Categorie,on_delete=models.CASCADE, related_name="articles")
-    contenu =  HTMLField('article_description',)
+    contenu =  HTMLField('article_description', null=True)
     photo = models.ImageField(upload_to ='article')
     tag_name = models.ManyToManyField(Tag, related_name="tag_article")
-    nom =  models.ForeignKey(User,on_delete=models.CASCADE)
+    nom =  models.ForeignKey(User,on_delete=models.CASCADE, null=True)
     date_add =  models.DateTimeField(auto_now_add=True)
     date_update =  models.DateTimeField(auto_now=True)
     status =  models.BooleanField(default=False)
@@ -66,6 +66,7 @@ class Article(models.Model):
         n = self.commentaires.all().count()
       
         return n
+
   
 
 
