@@ -7,7 +7,7 @@ from django.http import JsonResponse
 
 from django.contrib.auth.models import User
 from .models import *
-
+from .forms import UserUpdateForm, ProfileUpdateForm
 
 
 
@@ -28,7 +28,8 @@ def registerApi(request):
         image = request.FILES['file']
         # image = request.FILES.get('file')
         print('vvgsgsgsggs',image)
-        is_email=False            
+        is_email=False       
+        Min_Length = 8
         
 
         try:
@@ -62,6 +63,12 @@ def registerApi(request):
                             data = {
                                 'success':False,
                                 'message': 'Verifie votre champ Image'
+                            }
+
+                        elif len(password) < Min_Length:
+                            data = {
+                                'success':False,
+                                'message': 'Mot de passe doit etre au minimum 8 chiffres'
                             }
 
                         elif password == password2 and (password is not None and password2 is not None):
@@ -148,14 +155,55 @@ def logout_view(request):
 @login_required(login_url='comptes:login_visit')
 def element(request):
 
-    data={}
-    return render(request, 'pages/profil/index.html',data)
+    # u_form = UserUpdateForm(instance = request.user)
+    # p_form = ProfileUpdateForm(instance = request.user.profile)
+
+
+    # u_form = {
+    #     # "fullname": request.user.fullname, 
+    #     "username": request.user.username,
+    #     "email": request.user.email,
+    # }
+
+
+
+    context = {
+        # 'u_form' : u_form,
+        # 'p_form' : p_form
+    }
+    
+    return render(request, 'pages/profil/index.html',context)
 
 
 def modif_profil(request):
 
     data={}
     return render(request, 'pages/comptes/modif_profil.html',data)
+
+
+# def modifprofilapi(request):
+
+#     if request.method == 'POST' :
+#         u_form = UserUpdateForm(request.POST, instance = request.user)
+#         p_form = ProfileUpdateForm(request.POST, request.FILES, instance = request.user.profile)
+            
+#         if u_form.is_valid() and p_form.is_valid():
+#             u_form.save()
+#             p_form.save()
+           
+#             data={
+#                 'success':True,
+#                 'message': 'Enregistrement effectue avec succes'
+#             }
+
+
+#     return JsonResponse(data, safe=False)
+
+
+
+
+
+
 
 
 

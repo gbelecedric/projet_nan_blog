@@ -71,13 +71,45 @@ def archive(request):
     return render(request, 'pages/blog/archive.html',data)
 
 def ajout(request):
-    categorie = Categorie.objects.filter(status=True)
-    tag = Tag.objects.filter(status=True)
-    data={
-        'categorie': categorie,
-        'tag': tag,
-    }
-    return render(request, 'pages/dashbord/ajout.html',data)
+    # categorie = Categorie.objects.filter(status=True)
+    # tag = Tag.objects.filter(status=True)
+
+    titre = request.POST.get('titre',False)
+    # categorie_id = request.POST.get('categorie',False)
+    # tag_name = request.POST.get('tag',False)
+    description = request.POST.get('description',False)
+    image = request.POST.get('image',False)
+    #text = request.POST.get('text',False)
+    isSave=False
+    print('======================',titre,description,image, '==================')
+
+    if request.method == 'POST':
+        #if titre is not False and categorie_id is not False and tag_name is not False:
+           
+        isSave=True
+        try:
+            print(titre,description)
+            post = Article(titre = titre, description = description )
+            print('ok1')
+            post.save()
+            print('ook')
+            post.categorie_id = categorie_id
+            post.tag_name = tag_name
+            post.photo = image
+            post.save()
+            isSave=True
+            print(isSave)
+            print('++++++++++++++++++++ post save +++++++++++++++ ')
+        except :
+            isSave=False
+            print(isSave)
+            print('++++++++++++++++++ erreur de sauvegarde +++++++++++++++ ')
+
+    # data={
+    #     'categorie': categorie,
+    #     'tag': tag,
+    # }
+    return render(request, 'pages/dashbord/ajout.html')
 
 def element(request):
     
@@ -85,22 +117,46 @@ def element(request):
     return render(request, 'pages/blog/element.html',data)
 
 def dashbord(request):
+    user = request.user
+    print(user.username)
+    print('***************')
+    userpost = Article.objects.filter(nom=user)
+    b = Article.objects.filter(nom=user, status=True)
+    c = Article.objects.filter(nom=user, status=False)
+    bb = b.count()
+    a = userpost.count()
+    cc = c.count()
+    print('++++++++++++++++++',a)
+    print('++++++++++++++++++',bb,cc)
     
-    data={}
+    data={
+        'userpost': userpost,
+        'a': a,
+        'bb': bb,
+        'cc': cc,
+    }
     return render(request, 'pages/dashbord/dashbord.html',data)
 
 def dashpost(request):
+    user = request.user
+    print('+++++++++++++++',user,'+++++++++++++++++')
     userarticle = User.objects.all()
     #print(userarticle.ctegorieuser.articles.all)
+    userpost = Article.objects.filter(nom=user)
+
     data={
         'userarticle': userarticle,
+        'userpost': userpost,
     }
 
     return render(request, 'pages/dashbord/posts.html',data)
 
 def dashdetail(request):
     
-    data={}
+        
+    data = {
+       
+    }
     return render(request, 'pages/dashbord/dashdetail.html',data)
 
 def error(request):

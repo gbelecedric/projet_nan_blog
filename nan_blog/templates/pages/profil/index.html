@@ -51,7 +51,7 @@
 			<div class="row">
 				<div class="col-md-8">
 					<h1 class="tm-title bold shadow mb-4">{{ user.username }}</h1>
-					<h1 class="white bold shadow mb-4">Creative Director</h1>
+					<h1 class="white bold shadow mb-4"> {{user.profile.imageprofile}} </h1>
 				</div>
 				<div class="col-md-4">
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Modifier Votre Infos</button>
@@ -70,26 +70,15 @@
 								<form class="form-area" enctype="multipart/form-data" class="contact-form text-right"> {% csrf_token %}
 									<div class="row">
 										<div class="col-lg-10 form-group">
-											<input type="text" name="first_name" v-model.trim="form.first_name" placeholder="Nom" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your First Name'"
-											class="common-input mb-20 form-control">
+											<input type="text" name="first_name" v-model.trim="form.first_name" value="{{ user.first_name }}" placeholder="Nom" class="common-input mb-20 form-control">
 
-											<input type="text" name="last_name" v-model.trim="form.last_name" placeholder="Prenom" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your Las Name'"
-											class="common-input mb-20 form-control" >
+											<input type="text" name="last_name" v-model.trim="form.last_name" placeholder="Prenom" value="{{ u_form.last_name }}" class="common-input mb-20 form-control">
 
-											<input name="username" v-model.trim="form.username" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your Username'"
-											class="common-input mb-20 form-control" type="text">
+											<input name="username"  value="{{ user.username }}" placeholder="Username" type="text" class="common-input mb-20 form-control">
 											<!-- pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" -->
-											<input type="text" name="email" v-model.trim="form.email" placeholder="Email Address" 
-											onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control"
-											>
+											<input type="text" name="email" v-model.trim="form.email" value="{{ u_form.email }}" placeholder="Email Address" class="common-input mb-20 form-control">
 
-											<input type="file" name="file" ref="file"  placeholder="" class="common-input mb-20 form-control">
-
-											<input type="password" name="password" v-model.trim="form.password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your password'"
-											class="common-input mb-20 form-control" >
-
-											<input type="password" name="password2" v-model.trim="form.password2" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm password'"
-											class="common-input mb-20 form-control" >
+											<input type="file" name="imageprofile"  value="{{ user.profile.imageprofile }}" placeholder="" class="common-input mb-20 form-control" class="common-input mb-20 form-control">
 
 										</div>
         
