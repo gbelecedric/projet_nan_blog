@@ -4,7 +4,6 @@ from graphene import relay, ObjectType, Connection, Node, Int
 from graphene_django import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 
-
 from .models import *
 
 # Graphene will automatically map the Article model's fields onto the ArticleNode.
@@ -89,3 +88,4 @@ class Query(ObjectType):
 
     Like = relay.Node.Field(LikeNode)
     all_Likes = DjangoFilterConnectionField(LikeNode)
+
