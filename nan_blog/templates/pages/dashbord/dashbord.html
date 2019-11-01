@@ -58,9 +58,18 @@
                 <div class="x_content">
                     <div class="col-md-9 col-sm-12 ">
                     <div class="demo-container" style="height:280px">
-                        <div id="chart_plot_02" class="demo-placeholder"></div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="main" style="width: 1000px;height:400px;"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="courbe" style="width: 1000px;height:400px;"></div>
+                        </div>
+                        
+                        <!-- <div id="chart_plot_02" class="demo-placeholder"></div> -->
                     </div>
-                    <div class="tiles">
+                    <!-- <div class="tiles">
                         <div class="col-md-4 tile">
                         <span>Total Sessions</span>
                         <h2>231,809</h2>
@@ -82,7 +91,7 @@
                                 <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                         </span>
                         </div>
-                    </div>
+                    </div> -->
 
                     </div>
 
@@ -312,4 +321,56 @@
 
     </div>
     {% endif %}
+
+    <script type="text/javascript">
+        // based on prepared DOM, initialize echarts instance
+        var myCourbe = echarts.init(document.getElementById('main'));
+        var  myChart = echarts.init(document.getElementById('courbe'));
+
+        // specify chart configuration item and data
+        var optionCourbe = {
+                xAxis: {
+                    type: 'category',
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: [820, 932, 901, 934, 1290, 1330, 1320],
+                    type: 'line'
+                }]
+            };
+        var option = {
+            tooltip : {
+                formatter: "{a} <br/>{b} : {c}%"
+            },
+            toolbox: {
+                feature: {
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            series: [
+                {
+                    name: '业务指标',
+                    type: 'gauge',
+                    detail: {formatter:'{value}%'},
+                    data: [{value: 50, name: '完成率'}]
+                }
+            ]
+        };
+
+        setInterval(function () {
+            option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
+            myChart.setOption(option, true);
+        },2000);
+
+
+
+
+        // use configuration item and data specified to show chart
+        myChart.setOption(option);
+        myCourbe.setOption(optionCourbe);
+    </script>
 {% endblock dashbord %}
